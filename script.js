@@ -15,7 +15,7 @@ function genPasswords(){
     if(numPasswd > 10 || numPasswd <= 0 || passwd == ""){
         alert('Invalid input!')
     } else{
-        unorderedList.innerHTML = ''
+        unorderedList.textContent = ''
         const charArr = char.split("")
         // This first for loop adds a new password on the ul element.
         for(let i = 0; i < numPasswd; i++){ 
@@ -24,7 +24,9 @@ function genPasswords(){
                 let charIndex = Math.floor(Math.random() * charArr.length)
                 newPasswd += charArr[charIndex]
             }
-        unorderedList.innerHTML += `<li>${newPasswd}</li>`
+        const listItem = document.createElement("li")
+        listItem.textContent = `${newPasswd}`
+        unorderedList.append(listItem)
         newPasswd = '' // Resets the ul every time the generate button is clicked.
         }
     }
