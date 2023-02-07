@@ -1,19 +1,19 @@
 let char = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%&*()_-+={[}]^?/:;.,'
 let newPasswd = [] // If this variable is a string instead of an array, it will return "undefined" for the first generation. It's a simple fix.
 
-const pwGenerate = document.getElementById('generate')
-const unorderedList = document.getElementById('list-passwds')
+const pwGenerate = document.querySelector('#generate')
+const unorderedList = document.querySelector('#list-passwds')
 
 pwGenerate.addEventListener('click', genPasswords)
 
 // Function to generate passwords
 function genPasswords(){
-    const passwd = document.getElementById('qtity').value
+    const passwd = document.querySelector('#qtity').value
     regex = /\D/g // Regex to discount any letters and symbols, I might update this.
     let numPasswd = passwd.replace(regex, '')
     Number(numPasswd)
     if(numPasswd > 10 || numPasswd <= 0 || passwd == ""){
-        alert('Invalid input!')
+        unorderedList.textContent = 'Invalid input!'
     } else{
         unorderedList.textContent = ''
         const charArr = char.split("")
